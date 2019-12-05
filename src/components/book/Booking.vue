@@ -1,5 +1,18 @@
 <template>
   <v-container class="ma-0 pa-0 my-12">
+    <v-snackbar
+      :color="color"
+      v-model="snackbar"
+      :top="true"
+      :right="true"
+      :timeout="5000"
+      :multi-line="true"
+    >
+      <span :class="snackText">{{ text }}</span>
+      <v-btn right :color="snackBtn" icon @click="snackbar = false">
+        <v-icon>mdi-close</v-icon>
+      </v-btn>
+    </v-snackbar>
     <v-layout justify-center row wrap class="mt-11">
       <v-flex xs12 sm12 md12 lg12 xl12>
         <v-layout justify-center>
@@ -29,191 +42,111 @@
     </v-layout>
 
     <v-layout class="mt-12" row wrap>
-      <v-card flat>
-        <v-tabs centered color="indigo accent-4">
-          <v-tab style="width: 50%;">
-            <p class="text-capitalize text-center grey--text text--darken-4">
-              Welding
-            </p>
-          </v-tab>
-          <v-tab style="width: 50%;">
-            <p class="text-capitalize text-center grey--text text--darken-4">
-              Plumbing
-            </p>
-          </v-tab>
-          <v-tab-item>
-            <v-card width="90vw" flat>
-              <v-card-text class="px-10">
-                <v-layout class="mt-5" row wrap>
-                  <h1 class="headline grey--text text--darken-4">
-                    Our Welding Agents
-                  </h1>
-                </v-layout>
-                <v-layout class="mt-5" row wrap>
-                  <v-card width="100vw" class="mx-auto">
-                    <v-list>
-                      <v-list-item>
-                        <v-list-item-avatar>
-                          <v-img src="../../assets/av1.jpg"></v-img>
-                        </v-list-item-avatar>
+      <v-flex class="mt-5" xs12 sm12 md-6 lg4 xl3>
+        <v-card class="mx-auto" max-width="400">
+          <v-img height="100%" src="../../assets/av1.jpg"> </v-img>
+          <v-card-title class="grey--text text--darken-3"
+            >Jonathan Alexander</v-card-title
+          >
 
-                        <v-list-item-content>
-                          <v-list-item-title>Jason Oner</v-list-item-title>
-                        </v-list-item-content>
+          <v-card-actions>
+            <v-btn @click="openDialog" color="indigo" text>
+              <v-icon left>mdi-phone</v-icon>
+              <span right>Contact</span>
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-flex>
 
-                        <v-list-item-icon>
-                          <v-icon @click="openDialog" color="indigo"
-                            >mdi-contacts</v-icon
-                          >
-                        </v-list-item-icon>
-                      </v-list-item>
-                    </v-list>
-                  </v-card>
-                </v-layout>
-                <v-layout class="mt-5" row wrap>
-                  <v-card width="100vw" class="mx-auto">
-                    <v-list>
-                      <v-list-item>
-                        <v-list-item-avatar>
-                          <v-img src="../../assets/av1.jpg"></v-img>
-                        </v-list-item-avatar>
+      <v-flex class="mt-5" xs12 sm12 md-6 lg4 xl3>
+        <v-card class="mx-auto" max-width="400">
+          <v-img height="100%" src="../../assets/av2.jpg"> </v-img>
+          <v-card-title class="grey--text text--darken-3"
+            >Mason Ethan</v-card-title
+          >
+          <v-card-actions>
+            <v-btn @click="openDialog" color="indigo" text>
+              <v-icon left>mdi-phone</v-icon>
+              <span right>Contact</span>
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-flex>
 
-                        <v-list-item-content>
-                          <v-list-item-title>Jason Oner</v-list-item-title>
-                        </v-list-item-content>
+      <v-flex class="mt-5" xs12 sm12 md-6 lg4 xl3>
+        <v-card class="mx-auto" max-width="400">
+          <v-img height="100%" src="../../assets/av3.jpg"> </v-img>
+          <v-card-title class="grey--text text--darken-3"
+            >Alexander Jayden</v-card-title
+          >
+          <v-card-actions>
+            <v-btn @click="openDialog" color="indigo" text>
+              <v-icon left>mdi-phone</v-icon>
+              <span right>Contact</span>
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-flex>
+      
+      <v-flex class="mt-5" xs12 sm12 md-6 lg4 xl3>
+        <v-card class="mx-auto" max-width="400">
+          <v-img height="100%" src="../../assets/av4.jpg"> </v-img>
+          <v-card-title class="grey--text text--darken-3"
+            >Maverick Justin</v-card-title
+          >
+          <v-card-actions>
+            <v-btn @click="openDialog" color="indigo" text>
+              <v-icon left>mdi-phone</v-icon>
+              <span right>Contact</span>
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-flex>
+      
+      <v-flex class="mt-5" xs12 sm12 md-6 lg4 xl3>
+        <v-card class="mx-auto" max-width="400">
+          <v-img height="100%" src="../../assets/av5.jpg"> </v-img>
+          <v-card-title class="grey--text text--darken-3"
+            >Nolan Justin</v-card-title
+          >
+          <v-card-actions>
+            <v-btn @click="openDialog" color="indigo" text>
+              <v-icon left>mdi-phone</v-icon>
+              <span right>Contact</span>
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-flex>
 
-                        <v-list-item-icon>
-                          <v-icon @click="openDialog" color="indigo"
-                            >mdi-contacts</v-icon
-                          >
-                        </v-list-item-icon>
-                      </v-list-item>
-                    </v-list>
-                  </v-card>
-                </v-layout>
-                <v-layout class="mt-5" row wrap>
-                  <v-card width="100vw" class="mx-auto">
-                    <v-list>
-                      <v-list-item>
-                        <v-list-item-avatar>
-                          <v-img src="../../assets/av1.jpg"></v-img>
-                        </v-list-item-avatar>
+      <v-flex class="mt-5" xs12 sm12 md-6 lg4 xl3>
+        <v-card class="mx-auto" max-width="400">
+          <v-img height="100%" src="../../assets/av6.jpg"> </v-img>
+          <v-card-title class="grey--text text--darken-3"
+            >Wyatt Rudah</v-card-title
+          >
+          <v-card-actions>
+            <v-btn @click="openDialog" color="indigo" text>
+              <v-icon left>mdi-phone</v-icon>
+              <span right>Contact</span>
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-flex>
 
-                        <v-list-item-content>
-                          <v-list-item-title>Jason Oner</v-list-item-title>
-                        </v-list-item-content>
-
-                        <v-list-item-icon>
-                          <v-icon @click="openDialog" color="indigo"
-                            >mdi-contacts</v-icon
-                          >
-                        </v-list-item-icon>
-                      </v-list-item>
-                    </v-list>
-                  </v-card>
-                </v-layout>
-                <v-layout class="mt-5" row wrap>
-                  <v-card width="100vw" class="mx-auto">
-                    <v-list>
-                      <v-list-item>
-                        <v-list-item-avatar>
-                          <v-img src="../../assets/av1.jpg"></v-img>
-                        </v-list-item-avatar>
-
-                        <v-list-item-content>
-                          <v-list-item-title>Jason Oner</v-list-item-title>
-                        </v-list-item-content>
-
-                        <v-list-item-icon>
-                          <v-icon @click="openDialog" color="indigo"
-                            >mdi-contacts</v-icon
-                          >
-                        </v-list-item-icon>
-                      </v-list-item>
-                    </v-list>
-                  </v-card>
-                </v-layout>
-                <v-layout class="mt-5" row wrap>
-                  <v-card width="100vw" class="mx-auto">
-                    <v-list>
-                      <v-list-item>
-                        <v-list-item-avatar>
-                          <v-img src="../../assets/av1.jpg"></v-img>
-                        </v-list-item-avatar>
-
-                        <v-list-item-content>
-                          <v-list-item-title>Jason Oner</v-list-item-title>
-                        </v-list-item-content>
-
-                        <v-list-item-icon>
-                          <v-icon @click="openDialog" color="indigo"
-                            >mdi-contacts</v-icon
-                          >
-                        </v-list-item-icon>
-                      </v-list-item>
-                    </v-list>
-                  </v-card>
-                </v-layout>
-                <v-layout class="mt-5" row wrap>
-                  <v-card width="100vw" class="mx-auto">
-                    <v-list>
-                      <v-list-item>
-                        <v-list-item-avatar>
-                          <v-img src="../../assets/av1.jpg"></v-img>
-                        </v-list-item-avatar>
-
-                        <v-list-item-content>
-                          <v-list-item-title>Jason Oner</v-list-item-title>
-                        </v-list-item-content>
-
-                        <v-list-item-icon>
-                          <v-icon @click="openDialog" color="indigo"
-                            >mdi-contacts</v-icon
-                          >
-                        </v-list-item-icon>
-                      </v-list-item>
-                    </v-list>
-                  </v-card>
-                </v-layout>
-              </v-card-text>
-            </v-card>
-          </v-tab-item>
-
-          <v-tab-item>
-            <v-card flat>
-              <v-card-text class="px-10">
-                <v-layout row wrap>
-                  <h1 class="headline grey--text text--darken-4">
-                    Plumbing
-                  </h1>
-                </v-layout>
-                <v-layout row wrap>
-                  <v-flex xs12 sm12 md6 lg6 xl6>
-                    <p>
-                      As experts in the IT staffing world, we employ the top
-                      pros in staff augmentation and IT services. Our internal
-                      teams work hard every day to find the best, most qualified
-                      candidates. Then, we match the right candidates with the
-                      right organizations based on candidate’s individual
-                      skills, experiences, and interests and the organization’s
-                      specific needs.
-                    </p>
-                    <Form />
-                  </v-flex>
-                  <v-flex xs12 sm12 md6 lg6 xl6>
-                    <v-img
-                      src="../../assets/img5.jpg"
-                      width="90%"
-                      position="center"
-                      class="mx-auto"
-                    ></v-img>
-                  </v-flex>
-                </v-layout>
-              </v-card-text>
-            </v-card>
-          </v-tab-item>
-        </v-tabs>
-      </v-card>
+      <v-flex class="mt-5" xs12 sm12 md-6 lg4 xl3>
+        <v-card class="mx-auto" max-width="400">
+          <v-img height="100%" src="../../assets/av7.jpg"> </v-img>
+          <v-card-title class="grey--text text--darken-3"
+            >Jesse Alan</v-card-title
+          >
+          <v-card-actions>
+            <v-btn @click="openDialog" color="indigo" text>
+              <v-icon left>mdi-phone</v-icon>
+              <span right>Contact</span>
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-flex>
     </v-layout>
 
     <v-dialog
@@ -304,7 +237,15 @@
                   <v-icon>mdi-close</v-icon>
                 </v-btn>
 
-                <v-btn @click="send" dark color="grey darken-4" depressed small fab>
+                <v-btn
+                  @click="send"
+                  :loading="loading"
+                  dark
+                  color="grey darken-4"
+                  depressed
+                  small
+                  fab
+                >
                   <v-icon>mdi-send</v-icon>
                 </v-btn>
               </v-card-actions>
@@ -322,14 +263,21 @@ export default {
   data: () => ({
     tab: null,
     dialog: null,
-    booking:{
+    booking: {
       name: null,
       email: null,
       address: null,
       situation: null,
       report: null,
-      user: fb.auth().currentUser.uid
-    }
+      userId: fb.auth().currentUser.uid,
+      filedAt: new Date()
+    },
+    loading: null,
+    snackbar: false,
+    text: "",
+    color: null,
+    snackText: null,
+    snackBtn: null
   }),
   firestore() {
     return {
@@ -337,13 +285,29 @@ export default {
     };
   },
   methods: {
-    send(){
-      this.$firestore.service.add(this.booking)
-      .then(docRef => {
+    send() {
+      this.loading = true;
+      this.$firestore.service
+        .add(this.booking)
+        .then(docRef => {
           console.log(docRef);
+          this.snackbar = true;
+          this.text = "We have taken note of your service";
+          this.color = "white";
+          this.snackText = "indigo--text";
+          this.snackBtn = "indigo";
+          this.loading = false;
+          this.dialog = false;
         })
         .catch(error => {
+          const errorMessage = error.message;
           console.log(error);
+          this.snackbar = true;
+          this.text = errorMessage;
+          this.color = "red darken-4";
+          this.snackText = "white--text";
+          this.snackBtn = "white";
+          this.loading = false;
         });
     },
 

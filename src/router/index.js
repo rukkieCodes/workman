@@ -6,6 +6,7 @@ import Contactus from "../views/Contactus.vue";
 import Service from "../views/Service.vue";
 import Book from "../views/Book.vue";
 import Booking from "../views/Booking.vue";
+import Booked from "../views/Booked.vue";
 import { fb } from "../firebaseConfig";
 
 Vue.use(VueRouter);
@@ -44,6 +45,11 @@ const router = new VueRouter({
           path: "booking",
           name: "booking",
           component: Booking
+        },
+        {
+          path: "booked",
+          name: "booked",
+          component: Booked
         }
       ]
     }

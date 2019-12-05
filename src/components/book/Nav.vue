@@ -111,6 +111,11 @@ export default {
         title: "Booking",
         icon: "mdi-book",
         route: "/book/booking"
+      },
+      {
+        title: "Booked",
+        icon: "mdi-book-outline",
+        route: "/book/booked"
       }
     ]
   }),
