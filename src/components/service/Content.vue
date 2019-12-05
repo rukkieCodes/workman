@@ -43,6 +43,7 @@
                     At Workerman, we focus on serving both clients and
                     candidates from a wide range of industries.
                   </p>
+                  <Form/>
                 </v-flex>
               </v-layout>
             </v-card-text>
@@ -68,6 +69,7 @@
                     experiences, and interests and the organization’s specific
                     needs.
                   </p>
+                  <Form/>
                 </v-flex>
                 <v-flex xs12 sm12 md6 lg6 xl6>
                   <v-img
@@ -96,3 +98,12 @@
     </v-layout>
   </div>
 </template>
+
+<script>
+import Form from "../home/Form";
+export default {
+  components: {
+    Form
+  }
+}
+</script>

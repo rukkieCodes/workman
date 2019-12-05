@@ -17,7 +17,7 @@
           v-model="snackbar"
           top
           right
-          class="my-1"
+          class="mt-12"
           :timeout="5000"
           :multi-line="true"
         >
@@ -48,6 +48,7 @@
                     label="Email*"
                     color="grey darken-4"
                     class="grey--text text--darken-4"
+                    v-model="lemail"
                   >
                     <v-icon
                       class="grey--text text--darken-4"
@@ -62,6 +63,7 @@
                     class="grey--text text--darken-4"
                     label="Password*"
                     type="password"
+                    v-model="lpassword"
                   >
                     <v-icon
                       class="grey--text text--darken-4"
@@ -101,6 +103,7 @@
                     depressed
                     fab
                     :loading="loading2"
+                    @click="signIn"
                   >
                     <v-icon>mdi-location-enter</v-icon>
                   </v-btn>
@@ -131,6 +134,7 @@
                     color="grey darken-4"
                     class="grey--text text--darken-4"
                     required
+                    v-model="email"
                   >
                     <v-icon
                       class="grey--text text--darken-4"
@@ -146,6 +150,7 @@
                     color="grey darken-4"
                     class="grey--text text--darken-4"
                     required
+                    v-model="password"
                   >
                     <v-icon
                       class="grey--text text--darken-4"
@@ -185,6 +190,7 @@
                     small
                     fab
                     :loading="loading1"
+                    @click="signUp"
                   >
                     <v-icon>mdi-location-enter</v-icon>
                   </v-btn>
@@ -199,6 +205,7 @@
 </template>
 
 <script>
+import { fb } from "../../firebaseConfig";
 export default {
   data: () => ({
     dialog1: false,
@@ -210,7 +217,11 @@ export default {
     text: "",
     color: null,
     snackText: null,
-    snackBtn: null
+    snackBtn: null,
+    email: null,
+    password: null,
+    lemail: null,
+    lpassword: null
   }),
 
   beforeDestroy() {
@@ -229,6 +240,66 @@ export default {
   },
 
   methods: {
+    signIn() {
+      this.loading2 = true;
+      fb.auth()
+        .signInWithEmailAndPassword(this.lemail, this.lpassword)
+        .then(user => {
+          this.$router.replace("/book/booking");
+          console.log(user);
+        })
+        .catch(error => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          this.loading2 = false;
+          if (errorCode == "auth/wrong-password") {
+            // alert("wrong Password");
+            this.snackbar = true;
+            this.text = "Wrong Password";
+            this.color = "red darken-4";
+            this.snackText = "white--text";
+            this.snackBtn = "white";
+          } else {
+            // alert(errorMessage);
+            this.snackbar = true;
+            this.text = errorMessage;
+            this.color = "red darken-4";
+            this.snackText = "white--text";
+            this.snackBtn = "white";
+          }
+          // console.log(error);
+        });
+    },
+
+    signUp() {
+      this.loading1 = true;
+      fb.auth()
+        .createUserWithEmailAndPassword(this.email, this.password)
+        .then(() => {
+          this.$router.replace("/book/booking");
+        })
+        .catch(error => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          this.loading1 = false;
+          if (errorCode === "auth/week-password") {
+            // alert("Sorry Your password is week");
+            this.snackbar = true;
+            this.text = "Sorry Your Password is Week";
+            this.color = "red darken-4";
+            this.snackText = "white--text";
+            this.snackBtn = "white";
+          } else {
+            // alert(errorMessage);
+            this.snackbar = true;
+            this.text = errorMessage;
+            this.color = "red darken-4";
+            this.snackText = "white--text";
+            this.snackBtn = "white";
+          }
+          // console.log(error);
+        });
+    },
     onResize() {
       this.isMobile = window.innerWidth < 600;
     },

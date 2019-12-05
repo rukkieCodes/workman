@@ -5,27 +5,19 @@
     <v-layout justify-center row wrap class="mt-11">
       <v-flex xs12 sm12 md12 lg12 xl12>
         <v-layout justify-center>
-          <v-img
-            gradient="150deg, rgba(0,0,0, 0.2), rgba(0,0,0,0.8)"
-            src="../../assets/img4.jpg"
-            width="80vw"
-            height="60vh"
-          >
-            <v-layout class="px-5 pt-12 mt-12" row wrap justify-center>
-              <h1 class="text-center display-1 mt-12 white--text">
-                Welcome to our Care!!!
-              </h1>
-            </v-layout>
-            <v-layout class="px-5 mt-2" row wrap justify-center>
-              <p class="text-center body-1 white--text">
-                We are made for Service Delivery, Reliability and Satifactory
-              </p>
-            </v-layout>
-
-            <v-layout justify-center row wrap>
-              <Form />
-            </v-layout>
-          </v-img>
+          <v-parallax dark style="width: 100vw" src="../../assets/img4.jpg">
+            <v-row align="center" justify="center">
+              <v-col class="text-center" cols="12">
+                <h1 class="text-center display-1 mt-12 white--text">
+                  Welcome to our Care!!!
+                </h1>
+                <p class="text-center body-1 white--text">
+                  We are made for Service Delivery, Reliability and Satifactory
+                </p>
+                <Form />
+              </v-col>
+            </v-row>
+          </v-parallax>
         </v-layout>
       </v-flex>
     </v-layout>
@@ -38,7 +30,8 @@
 
     <v-layout class="mt-12" row wrap>
       <v-flex>
-        <v-img src="../../assets/img2.jpg" height="60vh"> </v-img>
+        <!-- <v-img src="../../assets/img2.jpg" height="60vh"> </v-img> -->
+        <v-parallax height="400" src="../../assets/img2.jpg"></v-parallax>
       </v-flex>
     </v-layout>
 
@@ -105,7 +98,7 @@
 
     <v-layout class="mt-12" row wrap>
       <v-flex>
-        <v-img src="../../assets/img3.jpg" height="60vh"> </v-img>
+        <v-parallax height="400" src="../../assets/img3.jpg"></v-parallax>
       </v-flex>
     </v-layout>
 
@@ -122,7 +115,7 @@
 
     <v-layout class="mt-12 mb-n3" row wrap>
       <v-flex xs12 sm12 md12 lg12 xl12>
-        <Footer/>
+        <Footer />
       </v-flex>
     </v-layout>
   </v-container>
